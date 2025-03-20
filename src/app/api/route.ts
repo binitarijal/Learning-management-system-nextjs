@@ -8,7 +8,7 @@ export async function GET(){
         username:"Binita Rijal",
         email:"Rijalbinita01@gmail.com",
         googleId:"123",
-        profileImgae:"yoyoo"
+        profileImage:"yoyoo"
     }
     )
     return Response.json({

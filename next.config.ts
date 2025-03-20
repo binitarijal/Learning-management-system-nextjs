@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
-
+// to tell next js to accept the link for image comming from this
 const nextConfig: NextConfig = {
-  /* config options here */
+ images:{
+  remotePatterns:[
+    {
+      protocol:"https",
+      hostname:"lh3.googleusercontent.com"
+    }
+  ]
+ }
 };
 
 export default nextConfig;
