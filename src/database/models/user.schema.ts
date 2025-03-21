@@ -1,20 +1,37 @@
 import mongoose from "mongoose"; //importing
 const schema=mongoose.Schema      //schema class from mongoose
 
-const userSchema=new schema({  //object from schema class
+   enum Role{
+    Student="student",
+    Admin="admin"
+
+   }
+   
+    interface IUser extends Document{
+    username:string,
+    profileImage:string,
+    email:string,
+    role:Role
+   }
+
+   const userSchema=new schema<IUser>({  //object from schema class 
     username:{   //designing column
-    type : String
+    type : String,
+    required:true
     },
     email:{
-        type: String
+        type: String,
+        required:true
     },
-    googleId:{
-    type: String
-    },
-    profileImgae:{
-        type:String
+    profileImage:String,
+        
+    
+    role:{
+        type:String,
+        enum:[Role.Student, Role.Admin],
+        default:Role.Student
     }
 })
 //model method
-const User=mongoose.model(" User",userSchema)// User == table ko naam , userschema=code k ma cha ta tyo
+const User=mongoose.models.User ||mongoose.model(" User",userSchema)// User == table ko naam , userschema=code k ma cha ta tyo
 export default User
