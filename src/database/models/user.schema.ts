@@ -1,13 +1,13 @@
 import mongoose from "mongoose"; //importing
 const schema=mongoose.Schema      //schema class from mongoose
 
-   enum Role{
+  export enum Role{
     Student="student",
     Admin="admin"
 
    }
    
-    interface IUser extends Document{
+  export  interface IUser extends Document{
     username:string,
     profileImage:string,
     email:string,

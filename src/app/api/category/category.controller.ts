@@ -2,9 +2,11 @@
 
 import dbConnect from "@/database/connection"
 import Category from "@/database/models/category.schema"
-
+import { NextRequest } from "next/server"
+import { authMiddleware } from "../../../../middleware/auth.middleware"
 export async function createCategory(req: Request){
 try{
+    const response=authMiddleware(req as NextRequest)
     await dbConnect()
     const{name, description}= await req.json()
     //to check already exist or not
@@ -12,10 +14,10 @@ try{
     if(existingCategory){
         return Response.json({
             message:"Category already exists with that name"
-        },{status:400})
+        },{status:400}) 
     }
    await Category.create({
-        name: name,
+        name: name, 
         description:description
     })
     return Response.json({
