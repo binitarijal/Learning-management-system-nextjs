@@ -30,7 +30,7 @@ return Response.json({
     message: "something went wrong"
 },{status:500})
 }
-}
+} 
 
 export async function getCategories (req:Request) {
   try{
