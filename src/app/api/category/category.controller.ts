@@ -6,7 +6,7 @@ import { NextRequest } from "next/server"
 import { authMiddleware } from "../../../../middleware/auth.middleware"
 export async function createCategory(req: Request){
 try{
-    const response=authMiddleware(req as NextRequest)
+    // const response=authMiddleware(req as NextRequest)
     await dbConnect()
     const{name, description}= await req.json()
     //to check already exist or not

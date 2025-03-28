@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react"
 "use client"
+
+import { Modal } from "@/components/modal/modal"
+import { useEffect, useState } from "react"
 async function fetchCategories(){
   try{
     const response=await  fetch("http://localhost:3000/api/category")
@@ -29,6 +31,7 @@ getCategories
         <div>
             <div className="flex flex-col">
     <div className=" overflow-x-auto">
+      {isModelOpen && <Modal  closeModal={closeModel}/>}
       <div className="min-w-full inline-block align-middle">
         <div className="relative  text-gray-500 focus-within:text-gray-900 mb-4">
           <div className="absolute inset-y-0 left-1 flex items-center pl-3 pointer-events-none ">
@@ -39,6 +42,9 @@ getCategories
             </svg>
           </div>
           <input type="text" id="default-search" className="block w-80 h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none" placeholder="Search for company" />
+          <button onClick={openModel} className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
+  + Category
+</button>
         </div>
         <div className="overflow-hidden ">
           <table className=" min-w-full rounded-xl">
